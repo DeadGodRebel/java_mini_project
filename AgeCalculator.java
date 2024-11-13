@@ -37,13 +37,11 @@ public class AgeCalculator {
 
         if (day < 1) {
             month--;
-            day = 0;
             day += daysInMonth(refMonth - 1, refYear);
         }
 
         if (month < 1) {
             year--;
-            month = 0;
             month += 12;
         }
 
