@@ -106,11 +106,11 @@ public class AgeCalculator {
             String[] arg1 = args[0].split("=");
             String age = arg1[1].replace("dlc", args[3]);
 
-            String[] ageParts = age.split(args[3]);
+            String[] ageParts = age.split("dlc");
 
-            String[] referenceDate = args[1].split(args[3]);
+            String[] referenceDate = args[1].split("dlc");
 
-            String[] dateFormat = args[2].split(args[3]);
+            String[] dateFormat = args[2].split("dlc");
 
             int dateIndex = indexOf(dateFormat, "DD");
             int monthIndex = indexOf(dateFormat, "MM");
@@ -134,13 +134,12 @@ public class AgeCalculator {
 
             String[] arg1 = args[0].split("=");
             String age = arg1[1].replace("dlc", args[3]);
-            System.out.println("To Calculate AGE, Enter the Date Of Birth of the person in format (YYYY-MM-DD): ");
 
             String[] ageParts = age.split(args[3]);
 
-            String[] referenceDate = args[1].split(args[3]);
+            String[] referenceDate = args[1].split("dlc");
 
-            String[] dateFormat = args[2].split(args[3]);
+            String[] dateFormat = args[2].split("dlc");
 
             int dateIndex = indexOf(dateFormat, "DD");
             int monthIndex = indexOf(dateFormat, "MM");
