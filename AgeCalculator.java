@@ -104,66 +104,62 @@ public class AgeCalculator {
         if (args[0].toUpperCase().contains("AGE")) {
 
             String[] arg1 = args[0].split("=");
-                String age = arg1[1].replace("dlc", args[3]);
-                
-                String[] ageParts = age.split(args[3]);
-                
-                String[] referenceDate = args[1].split(args[3]);
-                
-                String[] dateFormat = args[2].split(args[3]);
+            String age = arg1[1].replace("dlc", args[3]);
 
-                
-                int dateIndex = indexOf(dateFormat, "DD");
-                int monthIndex = indexOf(dateFormat, "MM");
-                int yearIndex = indexOf(dateFormat, "YYYY");
-                
-                if(dateIndex == -1 || monthIndex == -1 || yearIndex == -1 ){
-                    System.out.println("Error has occurred :(");
-                    return;
-                }
+            String[] ageParts = age.split(args[3]);
 
-                int ageYear = Integer.parseInt(ageParts[yearIndex]);
-                int ageMonth = Integer.parseInt(ageParts[monthIndex]);
-                int ageDay = Integer.parseInt(ageParts[dateIndex]);
+            String[] referenceDate = args[1].split(args[3]);
 
-                int refYear = Integer.parseInt(referenceDate[yearIndex]);
-                int refMonth = Integer.parseInt(referenceDate[monthIndex]);
-                int refDay = Integer.parseInt(referenceDate[dateIndex]);
-                
-                ageToDOB(ageDay, ageMonth, ageYear, refDay, refMonth, refYear);
-        }
-        else if(args[0].toUpperCase().contains("DOB")){
+            String[] dateFormat = args[2].split(args[3]);
 
+            int dateIndex = indexOf(dateFormat, "DD");
+            int monthIndex = indexOf(dateFormat, "MM");
+            int yearIndex = indexOf(dateFormat, "YYYY");
 
-                String[] arg1 = args[0].split("=");
-                String age = arg1[1].replace("dlc", args[3]);
-                System.out.println("To Calculate AGE, Enter the Date Of Birth of the person in format (YYYY-MM-DD): ");
-                
-                String[] ageParts = age.split(args[3]);
-                
-                String[] referenceDate = args[1].split(args[3]);
-                
-                String[] dateFormat = args[2].split(args[3]);
+            if (dateIndex == -1 || monthIndex == -1 || yearIndex == -1) {
+                System.out.println("Error has occurred :(");
+                return;
+            }
 
-                
-                int dateIndex = indexOf(dateFormat, "DD");
-                int monthIndex = indexOf(dateFormat, "MM");
-                int yearIndex = indexOf(dateFormat, "YYYY");
-                
-                if(dateIndex == -1 || monthIndex == -1 || yearIndex == -1 ){
-                    System.out.println("Error has occurred :(");
-                    return;
-                }
+            int ageYear = Integer.parseInt(ageParts[yearIndex]);
+            int ageMonth = Integer.parseInt(ageParts[monthIndex]);
+            int ageDay = Integer.parseInt(ageParts[dateIndex]);
 
-                int ageYear = Integer.parseInt(ageParts[yearIndex]);
-                int ageMonth = Integer.parseInt(ageParts[monthIndex]);
-                int ageDay = Integer.parseInt(ageParts[dateIndex]);
+            int refYear = Integer.parseInt(referenceDate[yearIndex]);
+            int refMonth = Integer.parseInt(referenceDate[monthIndex]);
+            int refDay = Integer.parseInt(referenceDate[dateIndex]);
 
-                int refYear = Integer.parseInt(referenceDate[yearIndex]);
-                int refMonth = Integer.parseInt(referenceDate[monthIndex]);
-                int refDay = Integer.parseInt(referenceDate[dateIndex]);
-                
-                dobToAge(ageDay, ageMonth, ageYear, refDay, refMonth, refYear);
+            ageToDOB(ageDay, ageMonth, ageYear, refDay, refMonth, refYear);
+        } else if (args[0].toUpperCase().contains("DOB")) {
+
+            String[] arg1 = args[0].split("=");
+            String age = arg1[1].replace("dlc", args[3]);
+            System.out.println("To Calculate AGE, Enter the Date Of Birth of the person in format (YYYY-MM-DD): ");
+
+            String[] ageParts = age.split(args[3]);
+
+            String[] referenceDate = args[1].split(args[3]);
+
+            String[] dateFormat = args[2].split(args[3]);
+
+            int dateIndex = indexOf(dateFormat, "DD");
+            int monthIndex = indexOf(dateFormat, "MM");
+            int yearIndex = indexOf(dateFormat, "YYYY");
+
+            if (dateIndex == -1 || monthIndex == -1 || yearIndex == -1) {
+                System.out.println("Error has occurred :(");
+                return;
+            }
+
+            int ageYear = Integer.parseInt(ageParts[yearIndex]);
+            int ageMonth = Integer.parseInt(ageParts[monthIndex]);
+            int ageDay = Integer.parseInt(ageParts[dateIndex]);
+
+            int refYear = Integer.parseInt(referenceDate[yearIndex]);
+            int refMonth = Integer.parseInt(referenceDate[monthIndex]);
+            int refDay = Integer.parseInt(referenceDate[dateIndex]);
+
+            dobToAge(ageDay, ageMonth, ageYear, refDay, refMonth, refYear);
         }
 
         else {
