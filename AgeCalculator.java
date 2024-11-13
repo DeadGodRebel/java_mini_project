@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class AgeCalculator {
     public static void dobToAge(int birthDay, int birthMonth, int birthYear, int refDay, int refMonth, int refYear) {
         if (!isValidDate(birthDay, birthMonth, birthYear) || !isValidDate(refDay, refMonth, refYear) || !isAfter(refDay, refMonth, refYear, birthDay, birthMonth, birthYear)) {
@@ -39,11 +37,13 @@ public class AgeCalculator {
 
         if (day < 1) {
             month--;
+            day = 0;
             day += daysInMonth(refMonth - 1, refYear);
         }
 
         if (month < 1) {
             year--;
+            month = 0;
             month += 12;
         }
 
@@ -85,15 +85,15 @@ public class AgeCalculator {
     }
 
     private static int indexOf(String[] format,String dlc){
-        int index = 0;
+        int index = 0;  
         for(String str:format){
-            if(str == dlc){
+            if(str.equalsIgnoreCase(dlc)){
                 return index;
             }
             ++index;
         }
         return -1;
-    }
+    }   
     
 
     public static void main(String[] args) {
@@ -111,9 +111,15 @@ public class AgeCalculator {
                 
                 String[] dateFormat = args[2].split(args[3]);
 
+                
                 int dateIndex = indexOf(dateFormat, "DD");
                 int monthIndex = indexOf(dateFormat, "MM");
                 int yearIndex = indexOf(dateFormat, "YYYY");
+                
+                if(dateIndex == -1 || monthIndex == -1 || yearIndex == -1 ){
+                    System.out.println("Error has occurred :(");
+                    return;
+                }
 
                 int ageYear = Integer.parseInt(ageParts[yearIndex]);
                 int ageMonth = Integer.parseInt(ageParts[monthIndex]);
@@ -123,7 +129,7 @@ public class AgeCalculator {
                 int refMonth = Integer.parseInt(referenceDate[monthIndex]);
                 int refDay = Integer.parseInt(referenceDate[dateIndex]);
                 
-                dobToAge(ageDay, ageMonth, ageYear, refDay, refMonth, refYear);
+                ageToDOB(ageDay, ageMonth, ageYear, refDay, refMonth, refYear);
         }
 
 
