@@ -166,5 +166,10 @@ public class AgeCalculator {
                 dobToAge(ageDay, ageMonth, ageYear, refDay, refMonth, refYear);
         }
 
+        else {
+            System.out.println("The Command line arguments are not done correctly!");
+            return;
+        }
+
     }
 }
