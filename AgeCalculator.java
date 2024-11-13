@@ -84,92 +84,44 @@ public class AgeCalculator {
         return refYear == birthYear && refMonth == birthMonth && refDay > birthDay;
     }
 
-    private static int indexOf(String[] format,String dlc){
-        int index = 0;
-        for(String str:format){
-            if(str == dlc){
-                return index;
-            }
-            ++index;
-        }
-    }
-    
-
     public static void main(String[] args) {
-
-        if (args[0].toUpperCase().contains("AGE")) {
-            System.out.println("Enter Reference Date in format (YYYY-MM-DD): ");
-                String[] arg1 = args[0].split('=');
-                String age = arg1[1].replace("dlc", args[3]);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("** WELCOME **");
+        System.out.println("Enter the number\n1. Calculate Age\n2. Calculate Date Of Birth");
+        int n = sc.nextInt();
+        sc.nextLine();
+        switch(n) {
+            case 1: 
+                System.out.println("Enter Reference Date in format (YYYY-MM-DD): ");
+                String[] refParts = sc.nextLine().split("-");
                 System.out.println("To Calculate AGE, Enter the Date Of Birth of the person in format (YYYY-MM-DD): ");
-                
-                String[] ageParts = age.split(args[3]);
-                
-                String[] referenceDate = args[1].split(args[3]);
-                
-                String[] dateFormat = args[2].split(args[3]);
-
-                int dateIndex = indexOf(dateFormat, "DD");
-                int monthIndex = indexOf(dateFormat, "MM");
-                int yearIndex = indexOf(dateFormat, "YYYY");
-
-                int ageYear = Integer.parseInt(ageParts[yearIndex]);
-                int ageMonth = Integer.parseInt(ageParts[monthIndex]);
-                int ageDay = Integer.parseInt(ageParts[dateIndex]);
-
-                int refYear = Integer.parseInt(refe[yearIndex]);
-                int refMonth = Integer.parseInt(refe[monthIndex]);
-                int refDay = Integer.parseInt(refe[dateIndex]);
-                
+                String[] ageParts = sc.nextLine().split("-");
+                int ageYear = Integer.parseInt(ageParts[0]);
+                int ageMonth = Integer.parseInt(ageParts[1]);
+                int ageDay = Integer.parseInt(ageParts[2]);
+                int refYear = Integer.parseInt(refParts[0]);
+                int refMonth = Integer.parseInt(refParts[1]);
+                int refDay = Integer.parseInt(refParts[2]);
                 dobToAge(ageDay, ageMonth, ageYear, refDay, refMonth, refYear);
                 break;
+
+            case 2:
+                System.out.println("Enter Reference Date in format (YYYY-MM-DD): ");
+                refParts = sc.nextLine().split("-");
+                System.out.println("To Calculate Date of Birth, Enter the age of the person in format (YYYY-MM-DD): ");
+                ageParts = sc.nextLine().split("-");
+                ageYear = Integer.parseInt(ageParts[0]);
+                ageMonth = Integer.parseInt(ageParts[1]);
+                ageDay = Integer.parseInt(ageParts[2]);
+                refYear = Integer.parseInt(refParts[0]);
+                refMonth = Integer.parseInt(refParts[1]);
+                refDay = Integer.parseInt(refParts[2]);
+                ageToDOB(ageDay, ageMonth, ageYear, refDay, refMonth, refYear);
+                break;
+
+            default:
+                System.out.println("Invalid Input");
         }
-
-
-
-
-
-
-
-
-
-    //     Scanner sc = new Scanner(System.in);
-    //     System.out.println("** WELCOME **");
-    //     System.out.println("Enter the number\n1. Calculate Age\n2. Calculate Date Of Birth");
-    //     int n = sc.nextInt();
-    //     sc.nextLine();
-    //     switch(n) {
-    //         case 1: 
-    //             System.out.println("Enter Reference Date in format (YYYY-MM-DD): ");
-    //             String[] refParts = sc.nextLine().split("-");
-    //             System.out.println("To Calculate AGE, Enter the Date Of Birth of the person in format (YYYY-MM-DD): ");
-    //             String[] ageParts = sc.nextLine().split("-");
-    //             int ageYear = Integer.parseInt(ageParts[0]);
-    //             int ageMonth = Integer.parseInt(ageParts[1]);
-    //             int ageDay = Integer.parseInt(ageParts[2]);
-    //             int refYear = Integer.parseInt(refParts[0]);
-    //             int refMonth = Integer.parseInt(refParts[1]);
-    //             int refDay = Integer.parseInt(refParts[2]);
-    //             dobToAge(ageDay, ageMonth, ageYear, refDay, refMonth, refYear);
-    //             break;
-
-    //         case 2:
-    //             System.out.println("Enter Reference Date in format (YYYY-MM-DD): ");
-    //             refParts = sc.nextLine().split("-");
-    //             System.out.println("To Calculate Date of Birth, Enter the age of the person in format (YYYY-MM-DD): ");
-    //             ageParts = sc.nextLine().split("-");
-    //             ageYear = Integer.parseInt(ageParts[0]);
-    //             ageMonth = Integer.parseInt(ageParts[1]);
-    //             ageDay = Integer.parseInt(ageParts[2]);
-    //             refYear = Integer.parseInt(refParts[0]);
-    //             refMonth = Integer.parseInt(refParts[1]);
-    //             refDay = Integer.parseInt(refParts[2]);
-    //             ageToDOB(ageDay, ageMonth, ageYear, refDay, refMonth, refYear);
-    //             break;
-
-    //         default:
-    //             System.out.println("Invalid Input");
-    //     }
-    //     sc.close();
-    // }
+        sc.close();
+    }
 }
