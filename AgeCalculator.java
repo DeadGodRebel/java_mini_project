@@ -92,6 +92,7 @@ public class AgeCalculator {
             }
             ++index;
         }
+        return -1;
     }
     
 
@@ -99,7 +100,8 @@ public class AgeCalculator {
 
         if (args[0].toUpperCase().contains("AGE")) {
             System.out.println("Enter Reference Date in format (YYYY-MM-DD): ");
-                String[] arg1 = args[0].split('=');
+
+                String[] arg1 = args[0].split("=");
                 String age = arg1[1].replace("dlc", args[3]);
                 System.out.println("To Calculate AGE, Enter the Date Of Birth of the person in format (YYYY-MM-DD): ");
                 
@@ -117,12 +119,11 @@ public class AgeCalculator {
                 int ageMonth = Integer.parseInt(ageParts[monthIndex]);
                 int ageDay = Integer.parseInt(ageParts[dateIndex]);
 
-                int refYear = Integer.parseInt(refe[yearIndex]);
-                int refMonth = Integer.parseInt(refe[monthIndex]);
-                int refDay = Integer.parseInt(refe[dateIndex]);
+                int refYear = Integer.parseInt(referenceDate[yearIndex]);
+                int refMonth = Integer.parseInt(referenceDate[monthIndex]);
+                int refDay = Integer.parseInt(referenceDate[dateIndex]);
                 
                 dobToAge(ageDay, ageMonth, ageYear, refDay, refMonth, refYear);
-                break;
         }
 
 
@@ -171,5 +172,5 @@ public class AgeCalculator {
     //             System.out.println("Invalid Input");
     //     }
     //     sc.close();
-    // }
+    }
 }
